@@ -1,16 +1,11 @@
-import PropTypes from 'prop-types';
-import css from './FriendListItem.module.css';
+import {Friend, OnlineStatus, Avatar, FriendsName} from "./FriendListItem.styled"
 
-export const FriendListItem = ({ avatar, name, isOnline }) => (
-    <li className={css.item}>
-        <span className={isOnline ? css.isOnline : css.isOffline}></span>
-        <img className={css.avatar} src={avatar} alt="User avatar" width="48" />
-        <p className={css.name}>{name}</p>
-    </li>
-);
 
-FriendListItem.propTypes = {
-    avatar: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    isOnline: PropTypes.bool.isRequired,
-};
+export const FriendListItem = ({isOnline, avatar, name}) => {
+  return (
+    <Friend className="item">
+      <OnlineStatus data-isonline = { isOnline } className="status"></OnlineStatus>
+      <Avatar className="avatar" src={avatar} alt="User avatar" width="48" />
+      <FriendsName className="name">{name }</FriendsName>
+    </Friend>)
+}
